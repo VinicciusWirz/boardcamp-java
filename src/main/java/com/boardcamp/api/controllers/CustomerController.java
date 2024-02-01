@@ -26,8 +26,9 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public String findOne(@PathVariable Long id) {
-        return "To be implemented";
+    public ResponseEntity<CustomerModel> findOne(@PathVariable Long id) {
+        CustomerModel customer = customerService.findOne(id);
+        return ResponseEntity.status(HttpStatus.OK).body(customer);
     }
 
     @PostMapping

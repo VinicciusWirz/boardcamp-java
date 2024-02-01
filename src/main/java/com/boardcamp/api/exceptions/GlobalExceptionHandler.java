@@ -16,4 +16,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Object> handlerCustomerCPFConflict(CustomerCPFConflict exception) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
     }
+
+    @ExceptionHandler({ CustomerNotFoundException.class })
+    public ResponseEntity<Object> handlerCustomerNotFoundException(CustomerNotFoundException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
 }
