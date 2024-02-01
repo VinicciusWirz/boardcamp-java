@@ -9,6 +9,8 @@ import com.boardcamp.api.services.RentalService;
 
 import jakarta.validation.Valid;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +29,8 @@ public class RentalController {
     }
 
     @GetMapping
-    public String findAll() {
-        return "To be implemented";
+    public ResponseEntity<List<RentalModel>> findAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(rentalService.findAll());
     }
 
     @PostMapping

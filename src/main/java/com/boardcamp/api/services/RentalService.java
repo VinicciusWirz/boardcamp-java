@@ -1,6 +1,7 @@
 package com.boardcamp.api.services;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -28,15 +29,17 @@ public class RentalService {
         this.gameRepository = gameRepository;
     }
 
-    public String findAll() {
-        return "To be implemented";
+    public List<RentalModel> findAll() {
+        return rentalRepository.findAll();
     }
 
     public RentalModel makeRental(RentalDTO dto) {
         Long gameId = dto.getGameId();
         Long customerId = dto.getCustomerId();
+
         CustomerModel customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new CustomerNotFoundException("Customer not found"));
+
         GameModel game = gameRepository.findById(gameId)
                 .orElseThrow(() -> new GameNotFoundException("Game not found"));
 
