@@ -1,6 +1,6 @@
 package com.boardcamp.api.controllers;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +27,9 @@ public class GameController {
     }
 
     @GetMapping
-    public String listAll() {
-        return "To be implemented";
+    public ResponseEntity<List<GameModel>> listAll() {
+        List<GameModel> games = gameService.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(games);
     }
 
     @PostMapping

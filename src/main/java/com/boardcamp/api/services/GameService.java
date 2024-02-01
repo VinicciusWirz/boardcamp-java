@@ -1,6 +1,6 @@
 package com.boardcamp.api.services;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -17,8 +17,8 @@ public class GameService {
         this.gameRepository = gameRepository;
     }
 
-    public String findAll() {
-        return "To be implemented";
+    public List<GameModel> findAll() {
+        return gameRepository.findAll();
     }
 
     public GameModel save(GameDTO dto) {
