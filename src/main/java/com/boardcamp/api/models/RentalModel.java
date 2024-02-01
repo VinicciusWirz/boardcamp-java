@@ -25,7 +25,7 @@ public class RentalModel {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "customerId")
+    @JoinColumn(name = "gameId")
     private GameModel game;
 
     @ManyToOne
