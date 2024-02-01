@@ -31,4 +31,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Object> handlerRentalOutOfStockException(RentalOutOfStockException exception) {
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(exception.getMessage());
     }
+
+    @ExceptionHandler({ RentalNotFoundException.class })
+    public ResponseEntity<Object> handlerRentalNotFoundException(RentalNotFoundException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
+    @ExceptionHandler({ RentalAlreadyReturnedException.class })
+    public ResponseEntity<Object> handlerRentalAlreadyReturnedException(RentalAlreadyReturnedException exception) {
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(exception.getMessage());
+    }
 }

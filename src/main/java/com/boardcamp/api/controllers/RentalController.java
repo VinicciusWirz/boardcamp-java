@@ -40,8 +40,9 @@ public class RentalController {
     }
 
     @PutMapping("/{id}/return")
-    public String putMethodName(@PathVariable Long id) {
-        return "To be implemented";
+    public ResponseEntity<RentalModel> putMethodName(@PathVariable Long id) {
+        RentalModel rental = rentalService.finishRental(id);
+        return ResponseEntity.status(HttpStatus.OK).body(rental);
     }
 
 }
