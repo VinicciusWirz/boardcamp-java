@@ -11,4 +11,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Object> handlerGameConflict(GameConflictException exception) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
     }
+
+    @ExceptionHandler({ CustomerCPFConflict.class })
+    public ResponseEntity<Object> handlerCustomerCPFConflict(CustomerCPFConflict exception) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
+    }
 }
