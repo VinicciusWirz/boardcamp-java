@@ -11,6 +11,7 @@ import lombok.Data;
 public class GameDTO {
 
     @NotBlank(message = "Game must have a name")
+    @NotNull(message = "Game name must not be null")
     private String name;
 
     private String image;

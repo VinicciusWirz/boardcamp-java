@@ -3,6 +3,7 @@ package com.boardcamp.api.models;
 import java.time.LocalDate;
 
 import com.boardcamp.api.dtos.RentalDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,12 +34,14 @@ public class RentalModel {
     private Long id;
 
     @Column(nullable = false, columnDefinition = "DATE DEFAULT CURRENT_DATE")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate rentDate;
 
     @Column(nullable = false)
     private int daysRented;
 
     @Column(nullable = true)
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate returnDate;
 
     @Column(nullable = false)
