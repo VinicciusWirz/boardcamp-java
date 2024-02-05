@@ -48,7 +48,7 @@ class GameIntegrationTests {
                 1,
                 1500L);
 
-        HttpEntity<GameDTO> body = new HttpEntity<GameDTO>(dto);
+        HttpEntity<GameDTO> body = new HttpEntity<>(dto);
 
         ResponseEntity<GameModel> response = testRestTemplate.exchange(
                 "/games",
@@ -71,7 +71,7 @@ class GameIntegrationTests {
                 0,
                 0L);
 
-        HttpEntity<GameDTO> body = new HttpEntity<GameDTO>(dto);
+        HttpEntity<GameDTO> body = new HttpEntity<>(dto);
 
         ResponseEntity<ValidationException> response = testRestTemplate.exchange(
                 "/games",
@@ -83,7 +83,6 @@ class GameIntegrationTests {
         assertEquals("Validation failed for object='gameDTO'. Error count: 3", response.getBody().getMessage());
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertEquals(0, gameRepository.count());
-        System.out.println(response.getBody());
     }
 
     @Test
@@ -97,7 +96,7 @@ class GameIntegrationTests {
         GameModel existingGame = new GameModel(dto);
         gameRepository.save(existingGame);
 
-        HttpEntity<GameDTO> body = new HttpEntity<GameDTO>(dto);
+        HttpEntity<GameDTO> body = new HttpEntity<>(dto);
 
         ResponseEntity<String> response = testRestTemplate.exchange(
                 "/games",
