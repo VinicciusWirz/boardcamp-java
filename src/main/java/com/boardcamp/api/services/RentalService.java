@@ -65,7 +65,7 @@ public class RentalService {
 
         LocalDate returnDate = rental.getReturnDate();
         if (returnDate != null) {
-            throw new RentalAlreadyReturnedException("This rental is already finished");
+            throw new RentalAlreadyReturnedException("This rental was already returned");
         }
 
         int daysRented = rental.getDaysRented();
@@ -77,7 +77,7 @@ public class RentalService {
             rental.setDelayFee(Long.valueOf(0));
         } else {
             rental.setDelayFee(Long.valueOf(
-                    (daysBetween - daysRented) * rental.getOriginalPrice()));
+                    (daysBetween - daysRented) * rental.getGame().getPricePerDay()));
         }
 
         rental.setReturnDate(today);
