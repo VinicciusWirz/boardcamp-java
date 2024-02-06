@@ -144,7 +144,7 @@ class RentalIntegrationTests {
 
     @Test
     void givenInvalidCustomerID_whenMakingNewRental_thenThrowsError() {
-        RentalDTO rentalDTO = new RentalDTO(anyLong(), anyLong(), 3);
+        RentalDTO rentalDTO = new RentalDTO(1L, 1L, 3);
 
         HttpEntity<RentalDTO> body = new HttpEntity<>(rentalDTO);
 
@@ -166,7 +166,7 @@ class RentalIntegrationTests {
         CustomerModel customerModel = new CustomerModel(customerDTO);
         CustomerModel customerSaved = customerRepository.save(customerModel);
 
-        RentalDTO rentalDTO = new RentalDTO(customerSaved.getId(), anyLong(), 3);
+        RentalDTO rentalDTO = new RentalDTO(customerSaved.getId(), 1L, 3);
 
         HttpEntity<RentalDTO> body = new HttpEntity<>(rentalDTO);
 
@@ -303,7 +303,7 @@ class RentalIntegrationTests {
                 HttpMethod.PUT,
                 null,
                 String.class,
-                anyLong());
+                1L);
 
         assertNotNull(response.getBody());
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());

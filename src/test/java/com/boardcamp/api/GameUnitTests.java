@@ -34,7 +34,7 @@ class GameUnitTests {
         GameDTO dto = new GameDTO("name", "image", 1, 1L);
         GameModel newGame = new GameModel(dto);
 
-        doReturn(false).when(gameRepository).existsByName(dto.getName());
+        doReturn(false).when(gameRepository).existsByName(any());
         doReturn(newGame).when(gameRepository).save(any());
 
         GameModel result = gameService.save(dto);
@@ -49,7 +49,7 @@ class GameUnitTests {
     void givenAlreadyRegisteredName_whenRegisteringAGame_thenThrowsError() {
         GameDTO dto = new GameDTO("name", "image", 1, 1L);
 
-        doReturn(true).when(gameRepository).existsByName(dto.getName());
+        doReturn(true).when(gameRepository).existsByName(any());
 
         GameConflictException exception = assertThrows(GameConflictException.class, () -> gameService.save(dto));
 
